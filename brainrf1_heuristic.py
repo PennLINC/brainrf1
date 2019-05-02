@@ -98,4 +98,6 @@ IntendedFor = {
         'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-02_dwi',
         'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC92_dwi',
         'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-RAND57_dwi']
+    'sub-{subject}/{session}/asl/sub-{subject}_{session}_MZeroScan': [
+             'sub-{subject}/{session}/asl/sub-{subject}_{session}_asl' ]
 }
