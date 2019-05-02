@@ -8,6 +8,39 @@ def create_key(template, outtype=('nii.gz',), annotation_classes=None):
         raise ValueError('Template must be a valid format string')
     return template, outtype, annotation_classes
 
+# Baseline session
+t1w = create_key(
+    'sub-{subject}/{session}/anat/sub-{subject}_{session}_T1w')
+t2w = create_key(
+    'sub-{subject}/{session}/anat/sub-{subject}_{session}_T2w')
+
+# CS-DSI scans
+hasc55_run1 = create_key(
+    'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-01_dwi')
+hasc55_run2 = create_key(
+    'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-02_dwi')
+hasc92 = create_key(
+    'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC92_dwi')
+rand57 = create_key(
+    'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-RAND57_dwi')
+dwi_rpe = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_epi')
+
+# ASL Scans
+mean_perf = create_key(
+    'sub-{subject}/{session}/asl/sub-{subject}_{session}_perfusion')
+
+# tms1 session
+nback_HiConHiLoWMgated_run1 = create_key(
+    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold')
+fmap_run1 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-01_phasediff')
+rest_gated = create_key(
+    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_acq-gated_run-01_bold')
+nback_HiConHiLoWMgated_run2 = create_key(
+    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold')
+fmap_run2 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-02_phasediff')
 
 def infotodict(seqinfo):
     """Heuristic evaluator for determining which runs belong where
@@ -22,39 +55,6 @@ def infotodict(seqinfo):
 
     last_run = len(seqinfo)
 
-    # Baseline session
-    t1w = create_key(
-        'sub-{subject}/{session}/anat/sub-{subject}_{session}_T1w')
-    t2w = create_key(
-        'sub-{subject}/{session}/anat/sub-{subject}_{session}_T2w')
-
-    # CS-DSI scans
-    hasc55_run1 = create_key(
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-01_dwi')
-    hasc55_run2 = create_key(
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-02_dwi')
-    hasc92 = create_key(
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC92_dwi')
-    rand57 = create_key(
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-RAND57_dwi')
-    dwi_rpe = create_key(
-        'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_epi')
-
-    # ASL Scans
-    mean_perf = create_key(
-        'sub-{subject}/{session}/asl/sub-{subject}_{session}_perfusion')
-
-    # tms1 session
-    nback_HiConHiLoWMgated_run1 = create_key(
-        'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold')
-    fmap_run1 = create_key(
-        'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-01_phasediff')
-    rest_gated = create_key(
-        'sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_acq-gated_run-01_bold')
-    nback_HiConHiLoWMgated_run2 = create_key(
-        'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold')
-    fmap_run2 = create_key(
-        'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-02_phasediff')
 
     info = {
         t1w: [], t2w: [], hasc55_run1: [], hasc55_run2: [], hasc92: [], rand57: [],
@@ -89,9 +89,9 @@ def infotodict(seqinfo):
 
 
 IntendedFor = {
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_epi': [
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-01_dwi',
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-02_dwi',
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC92_dwi',
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-RAND57_dwi']
+    dwi_rpe: [
+        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-01_dwi.nii.gz',
+        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-02_dwi.nii.gz',
+        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC92_dwi.nii.gz',
+        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-RAND57_dwi.nii.gz']
 }
