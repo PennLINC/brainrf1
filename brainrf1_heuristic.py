@@ -42,7 +42,11 @@ def infotodict(seqinfo):
 
     # ASL Scans
     mean_perf = create_key(
-        'sub-{subject}/{session}/asl/sub-{subject}_{session}_perfusion')
+        'sub-{subject}/{session}/asl/sub-{subject}_{session}_CBF')
+    raw_asl = create_key(
+        'sub-{subject}/{session}/asl/sub-{subject}_{session}_asl')
+     m0 = create_key(
+        'sub-{subject}/{session}/asl/sub-{subject}_{session}_MZeroScan')
 
     # tms1 session
     nback_HiConHiLoWMgated_run1 = create_key(
