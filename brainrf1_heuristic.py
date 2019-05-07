@@ -75,7 +75,7 @@ nback_LoConLoHiWMgated_run2 = create_key(
 # iTBS
 rest_gated = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}'
-    '_task-rest_acq-gated_run-01_bold')
+    '_task-rest_acq-gated_bold')
 
 # field map          
 fmap_run1_ph = create_key(
@@ -178,6 +178,7 @@ def infotodict(seqinfo):
         nback_LoConHiLoWMgated_run1: [],
         nback_HiConLoHiWMgated_run1: [],
         nback_LoConLoHiWMgated_run1: [],
+        rest_gated: [],
         nback_HiConHiLoWMgated_run2: [],
         nback_LoConHiLoWMgated_run2: [],
         nback_HiConLoHiWMgated_run2: [],
@@ -225,16 +226,7 @@ def infotodict(seqinfo):
             elif "M" in s.image_type:
                 info[qsm_mag].append(s.series_id)
 
-        # TMS day
-        elif "fmap_run-01" in protocol and "M" in s.image_type:
-            info[fmap_run1_mag].append(s.series_id)
-        elif "fmap_run-01" in protocol and "P" in s.image_type:
-            info[fmap_run1_ph].append(s.series_id)
-        elif "fmap_run-02" in protocol and "M" in s.image_type:
-            info[fmap_run2_mag].append(s.series_id)
-        elif "fmap_run-02" in protocol and "P" in s.image_type:
-            info[fmap_run2_ph].append(s.series_id)
-            
+        # TMS day    
         elif "task-nback_acq-HiConHiLoWMgated_run-01" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run1].append(s.series_id)
         elif "task-nback_acq-LoConHiLoWMgated_run-01" in s.protocol_name:
@@ -243,6 +235,20 @@ def infotodict(seqinfo):
             info[nback_HiConLoHiWMgated_run1].append(s.series_id)
         elif "task-nback_acq-LoConLoHiWMgated_run-01" in s.protocol_name:
             info[nback_LoConLoHiWMgated_run1].append(s.series_id)
+        
+        elif "fmap_run-01" in protocol and "M" in s.image_type:
+            info[fmap_run1_mag].append(s.series_id)
+        elif "fmap_run-01" in protocol and "P" in s.image_type:
+            info[fmap_run1_ph].append(s.series_id)
+        
+        elif "task-rest_acq-gated_bold" in s.protocol_name:
+            info[rest_gated].append(s.series_id)    
+            
+        elif "fmap_run-02" in protocol and "M" in s.image_type:
+            info[fmap_run2_mag].append(s.series_id)
+        elif "fmap_run-02" in protocol and "P" in s.image_type:
+            info[fmap_run2_ph].append(s.series_id)
+            
         elif "task-nback_acq-HiConHiLoWMgated_run-02" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run2].append(s.series_id)
         elif "task-nback_acq-LoConHiLoWMgated_run-02" in s.protocol_name:
