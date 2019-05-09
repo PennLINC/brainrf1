@@ -90,7 +90,7 @@ fmap_run2_mag = create_key(
 # **********************************************************************************
 # task session
 
-# field maps
+# field maps (C412 ONLY)
 fmap_pa_run1 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-01_epi')
 fmap_ap_run1 = create_key(
@@ -120,6 +120,11 @@ fmap_pa_run6 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-06_epi')
 fmap_ap_run6 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-06_epi')
+    
+# field maps (post C412)
+fmap_fmri_dist_pa_run1 = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-01_epi')
+fmap_fmri_dist_pa_run2 = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-02_epi')
+fmap_fmri_dist_pa_run3 = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-03_epi')
 
 
 # flanker
@@ -188,12 +193,19 @@ def infotodict(seqinfo):
 
         
         # task
+        # **** subject C412 only ****
         fmap_pa_run1: [], fmap_ap_run1: [],
         fmap_pa_run2: [], fmap_ap_run2: [],
         fmap_pa_run3: [], fmap_ap_run3: [],
         fmap_pa_run4: [], fmap_ap_run4: [],
         fmap_pa_run5: [], fmap_ap_run5: [],
         fmap_pa_run6: [], fmap_ap_run6: [],
+        
+        # **** post subject C412 ****
+        fmap_fmri_dist_pa_run1: [],
+        fmap_fmri_dist_pa_run2: [],
+        fmap_fmri_dist_pa_run3: [],
+        
         flanker_bold: [], flanker_pmu: [],
         graphlearning_bold_run1: [], graphlearning_pmu_run1: [],
         graphlearning_bold_run2: [], graphlearning_pmu_run2: [],
@@ -236,6 +248,7 @@ def infotodict(seqinfo):
         elif "task-nback_acq-LoConLoHiWMgated_run-01" in s.protocol_name:
             info[nback_LoConLoHiWMgated_run1].append(s.series_id)
         
+        # fmaps for subject C412
         elif "fmap_run-01" in protocol and "M" in s.image_type:
             info[fmap_run1_mag].append(s.series_id)
         elif "fmap_run-01" in protocol and "P" in s.image_type:
@@ -259,6 +272,7 @@ def infotodict(seqinfo):
             info[nback_LoConLoHiWMgated_run2].append(s.series_id)
         
         # Task day
+        # **** for subject C412 only ****
         elif "acq-fMRIdistmap_dir-PA_run-01" in s.protocol_name:
             info[fmap_pa_run1].append(s.series_id)
         elif "acq-fMRIdistmap_dir-AP_run-01" in s.protocol_name:
@@ -283,6 +297,15 @@ def infotodict(seqinfo):
             info[fmap_pa_run6].append(s.series_id)
         elif "acq-fMRIdistmap_dir-AP_run-06" in s.protocol_name:
             info[fmap_ap_run6].append(s.series_id)
+        
+        # **** post C412 ****
+        # ******* might be renamed ********
+        elif "acq-fMRIdistmap_dir-PA_run-01" in s.protocol_name:
+            info[fmap_fmri_dist_pa_run1].append(s.series_id)
+        elif "acq-fMRIdistmap_dir-PA_run-02" in s.protocol_name:
+            info[fmap_fmri_dist_pa_run2].append(s.series_id)
+        elif "acq-fMRIdistmap_dir-PA_run-03" in s.protocol_name:
+            info[fmap_fmri_dist_pa_run3].append(s.series_id)        
         
         # PMUs not found, how to differentiate if located
         elif "task-flanker_bold" in s.protocol_name:
@@ -312,6 +335,7 @@ MetadataExtras = {
 
 
 IntendedFor = {
+    # baseline
     dwi_rpe: [
         'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-01_dwi.nii.gz',
         'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-02_dwi.nii.gz',
@@ -319,5 +343,34 @@ IntendedFor = {
         'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-RAND57_dwi.nii.gz'],
 
     m0: [ 'sub-{subject}/{session}/asl/sub-{subject}_{session}_asl.nii.gz' ],
-    fmap_run1_ph: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold']
+    
+    #   **** sub-C412-specific ****
+    # tms visits
+    fmap_run1_ph: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold',
+                    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold'],
+    fmap_run2_ph: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold'],
+    
+    # task visit
+    fmap_pa_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold' ],
+    fmap_ap_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold' ],
+    fmap_pa_run2: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-01' ],
+    fmap_ap_run2: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-01' ],
+    fmap_pa_run3: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-02' ],
+    fmap_ap_run3: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-02' ],
+    fmap_pa_run4: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-03' ],
+    fmap_ap_run4: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-03' ],
+    fmap_pa_run5: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-04' ],
+    fmap_ap_run5: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-04' ],
+    fmap_pa_run6: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-05' ],
+    fmap_ap_run6: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-05' ],
+    
+    #   ********** subjects post-C412 ************
+    # task visit
+    fmap_fmri_dist_pa_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold' ],
+    fmap_fmri_dist_pa_run2: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-01',
+                              'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-02'],  
+    fmap_fmri_dist_pa_run3: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-03',
+                              'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-04',
+                              'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-05']  
+    
 }
