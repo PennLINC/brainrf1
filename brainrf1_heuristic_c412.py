@@ -83,7 +83,7 @@ fmap_run1_ph = create_key(
 fmap_run1_mag = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-01_magnitude{item}')
 fmap_run2_ph = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-02_phase{item}')
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-02_phasediff')
 fmap_run2_mag = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-02_magnitude{item}')
 
