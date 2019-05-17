@@ -328,11 +328,14 @@ IntendedFor = {
     # tms visits
     fmap_run1_ph: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold.nii.gz',
                     'sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
+    fmap_run1_mag:[ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold.nii.gz',
+                    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
     fmap_run2_ph: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold.nii.gz'],
+    fmap_run2_mag:[ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold.nii.gz'], 
     
     # task visit
-    fmap_pa_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold' ],
-    fmap_ap_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold' ],
+    fmap_pa_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
+    fmap_ap_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
     fmap_pa_run2: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-01.nii.gz' ],
     fmap_ap_run2: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-01.nii.gz' ],
     fmap_pa_run3: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-02.nii.gz' ],
