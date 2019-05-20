@@ -310,6 +310,11 @@ MetadataExtras = {
     fmap_run1_ph: {
         "EchoTime1": 0.004,
         "EchoTime2": 0.006
+    },
+    
+    fmap_run2_ph: {
+        "EchoTime1": 0.004,
+        "EchoTime2": 0.006
     }
 }
 
