@@ -322,33 +322,33 @@ MetadataExtras = {
 IntendedFor = {
     # baseline
     dwi_rpe: [
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-01_dwi.nii.gz',
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-02_dwi.nii.gz',
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-HASC92_dwi.nii.gz',
-        'sub-{subject}/{session}/dwi/sub-{subject}_{session}_acq-RAND57_dwi.nii.gz'],
+        '{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-01_dwi.nii.gz',
+        '{session}/dwi/sub-{subject}_{session}_acq-HASC55_run-02_dwi.nii.gz',
+        '{session}/dwi/sub-{subject}_{session}_acq-HASC92_dwi.nii.gz',
+        '{session}/dwi/sub-{subject}_{session}_acq-RAND57_dwi.nii.gz'],
 
-    m0: [ 'sub-{subject}/{session}/asl/sub-{subject}_{session}_asl.nii.gz' ],
+    m0: [ '{session}/asl/sub-{subject}_{session}_asl.nii.gz' ],
     
     #   **** sub-C412-specific ****
     # tms visits
-    fmap_run1_ph: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold.nii.gz',
-                    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run1_mag:[ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold.nii.gz',
-                    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run2_ph: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold.nii.gz'],
-    fmap_run2_mag:[ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold.nii.gz'], 
+    fmap_run1_ph: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold.nii.gz',
+                    '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
+    fmap_run1_mag:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold.nii.gz',
+                    '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
+    fmap_run2_ph: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold.nii.gz'],
+    fmap_run2_mag:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold.nii.gz'], 
     
     # task visit
-    fmap_pa_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
-    fmap_ap_run1: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
-    fmap_pa_run2: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-01.nii.gz' ],
-    fmap_ap_run2: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-01.nii.gz' ],
-    fmap_pa_run3: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-02.nii.gz' ],
-    fmap_ap_run3: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-02.nii.gz' ],
-    fmap_pa_run4: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-03.nii.gz' ],
-    fmap_ap_run4: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-03.nii.gz' ],
-    fmap_pa_run5: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-04.nii.gz' ],
-    fmap_ap_run5: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-04.nii.gz' ],
-    fmap_pa_run6: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-05.nii.gz' ],
-    fmap_ap_run6: [ 'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-05.nii.gz' ],
+    fmap_pa_run1: [ '{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
+    fmap_ap_run1: [ '{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
+    fmap_pa_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01.nii.gz' ],
+    fmap_ap_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01.nii.gz' ],
+    fmap_pa_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02.nii.gz' ],
+    fmap_ap_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02.nii.gz' ],
+    fmap_pa_run4: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03.nii.gz' ],
+    fmap_ap_run4: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03.nii.gz' ],
+    fmap_pa_run5: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-04.nii.gz' ],
+    fmap_ap_run5: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-04.nii.gz' ],
+    fmap_pa_run6: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-05.nii.gz' ],
+    fmap_ap_run6: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-05.nii.gz' ],
 }
