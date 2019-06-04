@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Heuristic for mapping Brain RF1 scans into BIDS for subject C412"""
+"""Heuristic for mapping Brain RF1 scans into BIDS"""
 '''
 **** All encompassing for all 4 behavioral conditions, but in current form ****
 fmaps for tms sessions currently not supported 
@@ -123,7 +123,7 @@ fmap_run2_mag_lclh = create_key(
 # **********************************************************************************
 # task session
 
-# field maps
+# field maps -- CHANGE WITH NEW FMAPS
 fmap_pa_run1 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-01_epi')
 fmap_ap_run1 = create_key(
@@ -138,21 +138,6 @@ fmap_pa_run3 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-03_epi')
 fmap_ap_run3 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-03_epi')
-
-fmap_pa_run4 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-04_epi')
-fmap_ap_run4 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-04_epi')
-
-fmap_pa_run5 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-05_epi')
-fmap_ap_run5 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-05_epi')
-
-fmap_pa_run6 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-06_epi')
-fmap_ap_run6 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-06_epi')
 
 
 # flanker
@@ -231,9 +216,6 @@ def infotodict(seqinfo):
         fmap_pa_run1: [], fmap_ap_run1: [],
         fmap_pa_run2: [], fmap_ap_run2: [],
         fmap_pa_run3: [], fmap_ap_run3: [],
-        fmap_pa_run4: [], fmap_ap_run4: [],
-        fmap_pa_run5: [], fmap_ap_run5: [],
-        fmap_pa_run6: [], fmap_ap_run6: [],
         
         flanker_bold: [], flanker_pmu: [],
         graphlearning_bold_run1: [], graphlearning_pmu_run1: [],
@@ -449,39 +431,5 @@ IntendedFor = {
     fmap_ap_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01_bold.nii.gz' ],
     fmap_pa_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold.nii.gz' ],
     fmap_ap_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold.nii.gz' ],
-    fmap_pa_run4: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03_bold.nii.gz' ],
-    fmap_ap_run4: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03_bold.nii.gz' ],
-    fmap_pa_run5: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-04_bold.nii.gz' ],
-    fmap_ap_run5: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-04_bold.nii.gz' ],
-    fmap_pa_run6: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-05_bold.nii.gz' ],
-    fmap_ap_run6: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-05_bold.nii.gz' ],
-    
     }
-    
-'''''
-    # LoConHiLo
-    fmap_run1_ph_lchl: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-01_bold.nii.gz',
-                         '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run1_mag_lchl:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-01_bold.nii.gz',
-                         '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run2_ph_lchl: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-02_bold.nii.gz'],
-    fmap_run2_mag_lchl:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-02_bold.nii.gz'],
-    
-    # HiConLoHi
-    fmap_run1_ph_hclh: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConLoHiWMgated_run-01_bold.nii.gz',
-                         '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run1_mag_hclh:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConLoHiWMgated_run-01_bold.nii.gz',
-                         '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run2_ph_hclh: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConLoHiWMgated_run-02_bold.nii.gz'],
-    fmap_run2_mag_hclh:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConLoHiWMgated_run-02_bold.nii.gz'],
-        
-    # LoConLoHi    
-    fmap_run1_ph_lclh: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConLoHiWMgated_run-01_bold.nii.gz',
-                         '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run1_mag_lclh:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConLoHiWMgated_run-01_bold.nii.gz',
-                         '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run2_ph_lclh: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConLoHiWMgated_run-02_bold.nii.gz'],
-    fmap_run2_mag_lclh:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConLoHiWMgated_run-02_bold.nii.gz'],
-        '''
-
 
