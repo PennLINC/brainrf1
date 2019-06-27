@@ -47,60 +47,61 @@ qsm_ph = create_key(
 # conditions (run 1)
 nback_LoConHiLoWMgated_run1 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-LoConHiLoWMgated_run-01_bold')
+    'task-nback_acq-LoConHiLoWMgated_run-01_bold')    
  
 # conditions (run 2)   
 nback_LoConHiLoWMgated_run2 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-LoConHiLoWMgated_run-02_bold')
-    
+    'task-nback_acq-LoConHiLoWMgated_run-02_bold')   
+
 # iTBS
 rest_gated = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}'
     '_task-rest_acq-gated_bold')
 
 # field map         
-fmap_run1_ph = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-01_phasediff')
-fmap_run1_mag = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-01_magnitude{item}')
-fmap_run2_ph = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-02_phasediff')
-fmap_run2_mag = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_run-02_magnitude{item}')
+fmap_pa_tms_run1 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-01_epi')
+fmap_ap_tms_run1 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-01_epi')
     
+fmap_pa_tms_run2 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-02_epi')
+fmap_ap_tms_run2 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-02_epi')    
+
 # **********************************************************************************
 # task session
 
 # field maps
-fmap_pa_run1 = create_key(
+fmap_pa_task_run1 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-01_epi')
-fmap_ap_run1 = create_key(
+fmap_ap_task_run1 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-01_epi')
 
-fmap_pa_run2 = create_key(
+fmap_pa_task_run2 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-02_epi')
-fmap_ap_run2 = create_key(
+fmap_ap_task_run2 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-02_epi')
 
-fmap_pa_run3 = create_key(
+fmap_pa_task_run3 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-03_epi')
-fmap_ap_run3 = create_key(
+fmap_ap_task_run3 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-03_epi')
 
-fmap_pa_run4 = create_key(
+fmap_pa_task_run4 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-04_epi')
-fmap_ap_run4 = create_key(
+fmap_ap_task_run4 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-04_epi')
 
-fmap_pa_run5 = create_key(
+fmap_pa_task_run5 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-05_epi')
-fmap_ap_run5 = create_key(
+fmap_ap_task_run5 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-05_epi')
 
-fmap_pa_run6 = create_key(
+fmap_pa_task_run6 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-06_epi')
-fmap_ap_run6 = create_key(
+fmap_ap_task_run6 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-06_epi')
 
 
@@ -157,17 +158,17 @@ def infotodict(seqinfo):
         nback_LoConHiLoWMgated_run1: [],
         rest_gated: [],
         nback_LoConHiLoWMgated_run2: [],
-
-        fmap_run1_ph: [], fmap_run1_mag: [],
-        fmap_run2_ph: [], fmap_run2_mag: [],
-
+        
+        fmap_pa_tms_run1: [], fmap_ap_tms_run1: [],
+        fmap_pa_tms_run2: [], fmap_ap_tms_run2: [],
+        
         # task
-        fmap_pa_run1: [], fmap_ap_run1: [],
-        fmap_pa_run2: [], fmap_ap_run2: [],
-        fmap_pa_run3: [], fmap_ap_run3: [],
-        fmap_pa_run4: [], fmap_ap_run4: [],
-        fmap_pa_run5: [], fmap_ap_run5: [],
-        fmap_pa_run6: [], fmap_ap_run6: [],
+        fmap_pa_task_run1: [], fmap_ap_task_run1: [],
+        fmap_pa_task_run2: [], fmap_ap_task_run2: [],
+        fmap_pa_task_run3: [], fmap_ap_task_run3: [],
+        fmap_pa_task_run4: [], fmap_ap_task_run4: [],
+        fmap_pa_task_run5: [], fmap_ap_task_run5: [],
+        fmap_pa_task_run6: [], fmap_ap_task_run6: [],
         
         flanker_bold: [], flanker_pmu: [],
         graphlearning_bold_run1: [], graphlearning_pmu_run1: [],
@@ -201,55 +202,47 @@ def infotodict(seqinfo):
             elif "M" in s.image_type:
                 info[qsm_mag].append(s.series_id)
 
-        # TMS day    
+        # TMS day  
+        elif "acq-fMRIdistmap_dir-PA_run-01" in s.protocol_name:
+            info[fmap_pa_tms_run1].append(s.series_id)
+        elif "acq-fMRIdistmap_dir-AP_run-01" in s.protocol_name:
+            info[fmap_ap_tms_run1].append(s.series_id)
+        elif "acq-fMRIdistmap_dir-PA_run-02" in s.protocol_name:
+            info[fmap_pa_tms_run2].append(s.series_id)
+        elif "acq-fMRIdistmap_dir-AP_run-02" in s.protocol_name:
+            info[fmap_ap_tms_run2].append(s.series_id)
+        
         elif "task-nback_acq-LoConHiLoWMgated_run-01" in s.protocol_name:
             info[nback_LoConHiLoWMgated_run1].append(s.series_id)
-
-        # fmaps for subject C412
-        # * run 1 *
-        elif "fmap_run-01" in protocol and "M" in s.image_type:
-            info[fmap_run1_mag].append(s.series_id)
-        elif "fmap_run-01" in protocol and "P" in s.image_type:
-            info[fmap_run1_ph].append(s.series_id)
         
-        elif "task-rest_acq-gated_bold" in s.protocol_name:
-            info[rest_gated].append(s.series_id)    
-        
-        # * run 2 *  
-        elif "fmap_run-02" in protocol and "M" in s.image_type:
-            info[fmap_run2_mag].append(s.series_id)
-        elif "fmap_run-02" in protocol and "P" in s.image_type:
-            info[fmap_run2_ph].append(s.series_id)
-            
         elif "task-nback_acq-LoConHiLoWMgated_run-02" in s.protocol_name:
             info[nback_LoConHiLoWMgated_run2].append(s.series_id)
-            
+        
         # Task day
-        # **** for subject C412 only ****
         elif "acq-fMRIdistmap_dir-PA_run-01" in s.protocol_name:
-            info[fmap_pa_run1].append(s.series_id)
+            info[fmap_pa_task_run1].append(s.series_id)
         elif "acq-fMRIdistmap_dir-AP_run-01" in s.protocol_name:
-            info[fmap_ap_run1].append(s.series_id)
+            info[fmap_ap_task_run1].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-02" in s.protocol_name:
-            info[fmap_pa_run2].append(s.series_id)
+            info[fmap_pa_task_run2].append(s.series_id)
         elif "acq-fMRIdistmap_dir-AP_run-02" in s.protocol_name:
-            info[fmap_ap_run2].append(s.series_id)
+            info[fmap_ap_task_run2].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-03" in s.protocol_name:
-            info[fmap_pa_run3].append(s.series_id)
+            info[fmap_pa_task_run3].append(s.series_id)
         elif "acq-fMRIdistmap_dir-AP_run-03" in s.protocol_name:
-            info[fmap_ap_run3].append(s.series_id)
+            info[fmap_ap_task_run3].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-04" in s.protocol_name:
-            info[fmap_pa_run4].append(s.series_id)
+            info[fmap_pa_task_run4].append(s.series_id)
         elif "acq-fMRIdistmap_dir-AP_run-04" in s.protocol_name:
-            info[fmap_ap_run4].append(s.series_id)
+            info[fmap_ap_task_run4].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-05" in s.protocol_name:
-            info[fmap_pa_run5].append(s.series_id)
+            info[fmap_pa_task_run5].append(s.series_id)
         elif "acq-fMRIdistmap_dir-AP_run-05" in s.protocol_name:
-            info[fmap_ap_run5].append(s.series_id)
+            info[fmap_ap_task_run5].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-06" in s.protocol_name:
-            info[fmap_pa_run6].append(s.series_id)
+            info[fmap_pa_task_run6].append(s.series_id)
         elif "acq-fMRIdistmap_dir-AP_run-06" in s.protocol_name:
-            info[fmap_ap_run6].append(s.series_id)
+            info[fmap_ap_task_run6].append(s.series_id)
         
         # PMUs not found, how to differentiate if located
         elif "task-flanker_bold" in s.protocol_name:
@@ -270,18 +263,6 @@ def infotodict(seqinfo):
 
 
 # Any extra metadata that might not be automatically added by dcm2niix. H
-MetadataExtras = {
-    fmap_run1_ph: {
-        "EchoTime1": 0.004,
-        "EchoTime2": 0.006
-    },
-    
-    fmap_run2_ph: {
-        "EchoTime1": 0.004,
-        "EchoTime2": 0.006
-    }
-}
-
 
 IntendedFor = {
     # baseline
@@ -295,24 +276,21 @@ IntendedFor = {
     
     #   **** sub-C412-specific ****
     # tms visits
-    fmap_run1_ph: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-01_bold.nii.gz',
+    # LoConHiLo    
+    fmap_pa_tms_run1: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-01_bold.nii.gz',
+                     '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
+    fmap_ap_tms_run1: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-01_bold.nii.gz',
                     '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run1_mag:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-01_bold.nii.gz',
-                    '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
-    fmap_run2_ph: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-02_bold.nii.gz'],
-    fmap_run2_mag:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-02_bold.nii.gz'],
-    
+    fmap_pa_tms_run2:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-02_bold.nii.gz'],
+    fmap_ap_tms_run2:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-02_bold.nii.gz'],
+    }
+'''''
     # task visit
-    fmap_pa_run1: [ '{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
-    fmap_ap_run1: [ '{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
-    fmap_pa_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01_bold.nii.gz' ],
-    fmap_ap_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01_bold.nii.gz' ],
-    fmap_pa_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold.nii.gz' ],
-    fmap_ap_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold.nii.gz' ],
-    fmap_pa_run4: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03_bold.nii.gz' ],
-    fmap_ap_run4: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03_bold.nii.gz' ],
-    fmap_pa_run5: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-04_bold.nii.gz' ],
-    fmap_ap_run5: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-04_bold.nii.gz' ],
-    fmap_pa_run6: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-05_bold.nii.gz' ],
-    fmap_ap_run6: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-05_bold.nii.gz' ],
-}
+    fmap_pa_task_run1: [ '{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
+    fmap_ap_task_run1: [ '{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
+    fmap_pa_task_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01_bold.nii.gz' ],
+    fmap_ap_task_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01_bold.nii.gz' ],
+    fmap_pa_task_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold.nii.gz' ],
+    fmap_ap_task_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold.nii.gz' ],
+'''
+    
