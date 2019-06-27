@@ -61,14 +61,14 @@ rest_gated = create_key(
 
 # field map         
 fmap_pa_tms_run1 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-01_epi')
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_fmap_acq-fMRIdistmap_dir-PA_run-01_epi')
 fmap_ap_tms_run1 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-01_epi')
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_fmap_acq-fMRIdistmap_dir-AP_run-01_epi')
     
 fmap_pa_tms_run2 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-PA_run-02_epi')
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_fmap_acq-fMRIdistmap_dir-PA_run-02_epi')
 fmap_ap_tms_run2 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_dir-AP_run-02_epi')    
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_fmap_acq-fMRIdistmap_dir-AP_run-02_epi')    
 
 # **********************************************************************************
 # task session
