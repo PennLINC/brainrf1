@@ -12,26 +12,26 @@ def create_key(template, outtype=('nii.gz',), annotation_classes=None):
 # **********************************************************************************
 # tms session
 
-# conditions (run 1)
+# condition (run 1)
 nback_HiConHiLoWMgated_run1 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
     'task-nback_acq-HiConHiLoWMgated_run-01_bold')    
  
-# conditions (run 2)   
+# condition (run 2)   
 nback_HiConHiLoWMgated_run2 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
     'task-nback_acq-HiConHiLoWMgated_run-02_bold')   
 
 # iTBS
-rest_gated = create_key(
+iTBS_gated = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}'
     '_task-rest_acq-gated_bold')
 
 # field map, topup style      
 fmap_pa_tms_run1 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_fmap_acq-fMRIdistmap_dir-PA_run-01_epi')
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-PA_run-01_epi')
 fmap_pa_tms_run2 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_fmap_acq-fMRIdistmap_dir-PA_run-02_epi')  
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-PA_run-02_epi')  
 
 # **********************************************************************************
 
@@ -51,7 +51,7 @@ def infotodict(seqinfo):
 
         # TMS scans
         nback_HiConHiLoWMgated_run1: [],
-        rest_gated: [],
+        iTBS_gated: [],
         nback_HiConHiLoWMgated_run2: [],
         
         fmap_pa_tms_run1: [],
@@ -71,7 +71,7 @@ def infotodict(seqinfo):
             info[nback_HiConHiLoWMgated_run1].append(s.series_id)
             
         elif "task-rest_acq-gated_bold" in s.protocol_name:
-            info[rest_gated].append(s.series_id)    
+            info[iTBS_gated].append(s.series_id)    
         
         elif "task-nback_acq-HiConHiLoWMgated_run-02" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run2].append(s.series_id)
@@ -79,13 +79,12 @@ def infotodict(seqinfo):
     return info
 
 
-# Any extra metadata that might not be automatically added by dcm2niix. H
+# Any extra metadata that might not be automatically added by dcm2niix.
 
 IntendedFor = {
     
-    # tms visits
     # HiConHiLo    
     fmap_pa_tms_run1: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold.nii.gz',
-                     '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
+                        '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
     fmap_pa_tms_run2:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold.nii.gz'],
     }
