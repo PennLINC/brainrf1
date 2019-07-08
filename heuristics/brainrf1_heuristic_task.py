@@ -61,12 +61,12 @@ def infotodict(seqinfo):
         protocol = s.protocol_name.lower()
 
         # Task day
-        elif "acq-fMRIdistmap_dir-PA_run-01" in s.protocol_name:
-            info[fmap_pa_run1].append(s.series_id)
+        if "acq-fMRIdistmap_dir-PA_run-01" in s.protocol_name:
+            info[fmap_pa_task_run1].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-02" in s.protocol_name:
-            info[fmap_pa_run2].append(s.series_id)
+            info[fmap_pa_task_run2].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-03" in s.protocol_name:
-            info[fmap_pa_run3].append(s.series_id)
+            info[fmap_pa_task_run3].append(s.series_id)
         
         # PMUs not found, how to differentiate if located
         elif "task-flanker_bold" in s.protocol_name:
