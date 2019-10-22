@@ -25,7 +25,7 @@ nback_LoConHiLoWMgated_run2 = create_key(
 # iTBS
 iTBS_gated = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}'
-    '_task-rest_acq-gated_bold')
+    '_task-iTBS_acq-gated_bold')
 
 # field map, topup style      
 fmap_pa_tms_run1 = create_key(
@@ -85,6 +85,6 @@ IntendedFor = {
     
     # LoConHiLo    
     fmap_pa_tms_run1: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-01_bold.nii.gz',
-                        '{session}/func/sub-{subject}_{session}_task-rest_acq-gated_bold.nii.gz'],
+                        '{session}/func/sub-{subject}_{session}_task-iTBS_acq-gated_bold.nii.gz'],
     fmap_pa_tms_run2:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-LoConHiLoWMgated_run-02_bold.nii.gz'],
     }
