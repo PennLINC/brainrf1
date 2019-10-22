@@ -70,7 +70,7 @@ def infotodict(seqinfo):
         elif "task-nback_acq-HiConHiLoWMgated_run-01" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run1].append(s.series_id)
             
-        elif "task-rest_acq-gated_bold" in s.protocol_name:
+        elif "task-iTBS_acq-gated_bold" in s.protocol_name:
             info[iTBS_gated].append(s.series_id)    
         
         elif "task-nback_acq-HiConHiLoWMgated_run-02" in s.protocol_name:
