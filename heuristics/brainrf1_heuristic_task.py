@@ -10,10 +10,16 @@ def create_key(template, outtype=('nii.gz',), annotation_classes=None):
 # field maps
 fmap_pa_task_run1 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-PA_run-01_epi')
+fmap_ap_task_run1 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-AP_run-01_epi')
 fmap_pa_task_run2 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-PA_run-02_epi')
+fmap_ap_task_run2 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-AP_run-02_epi')
 fmap_pa_task_run3 = create_key(
     'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-PA_run-03_epi')
+fmap_ap_task_run3 = create_key(
+    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-AP_run-03_epi')
 
 # flanker
 flanker_bold = create_key(
@@ -26,10 +32,12 @@ graphlearning_bold_run2 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold')    
 graphlearning_bold_run3 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-03_bold')
-graphlearning_bold_run4 = create_key(
-    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-04_bold')
-graphlearning_bold_run5 = create_key(
-    'sub-{subject}/{session}/func/sub-{subject}_{session}_task-graphlearning_run-05_bold')
+    
+# QSM scans
+qsm_mag = create_key(
+    'sub-{subject}/{session}/qsm/sub-{subject}_{session}_magnitude{item}')
+qsm_ph = create_key(
+    'sub-{subject}/{session}/qsm/sub-{subject}_{session}_phase{item}')
 
 def infotodict(seqinfo):
     """Heuristic evaluator for determining which runs belong where
@@ -46,15 +54,19 @@ def infotodict(seqinfo):
     info = {
         # task
         fmap_pa_task_run1: [],
+        fmap_ap_task_run1: [],
         fmap_pa_task_run2: [],
-        fmap_pa_task_run3: [], 
+        fmap_ap_task_run2: [],
+        fmap_pa_task_run3: [],
+        fmap_ap_task_run3: [],  
         
         flanker_bold: [],
         graphlearning_bold_run1: [],
         graphlearning_bold_run2: [],
         graphlearning_bold_run3: [],
-        graphlearning_bold_run4: [],
-        graphlearning_bold_run5: [],
+        
+        qsm_ph: [], 
+        qsm_mag: [],
     }
     
     for s in seqinfo:
@@ -63,10 +75,16 @@ def infotodict(seqinfo):
         # Task day
         if "acq-fMRIdistmap_dir-PA_run-01" in s.protocol_name:
             info[fmap_pa_task_run1].append(s.series_id)
+        elif "acq-fMRIdistmap_dir-AP_run-01" in s.protocol_name:
+            info[fmap_ap_task_run1].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-02" in s.protocol_name:
             info[fmap_pa_task_run2].append(s.series_id)
+        elif "acq-fMRIdistmap_dir-AP_run-02" in s.protocol_name:
+            info[fmap_ap_task_run2].append(s.series_id)
         elif "acq-fMRIdistmap_dir-PA_run-03" in s.protocol_name:
             info[fmap_pa_task_run3].append(s.series_id)
+        elif "acq-fMRIdistmap_dir-AP_run-03" in s.protocol_name:
+            info[fmap_ap_task_run3].append(s.series_id)
         
         # PMUs not found, how to differentiate if located
         elif "task-flanker_bold" in s.protocol_name:
@@ -78,10 +96,11 @@ def infotodict(seqinfo):
             info[graphlearning_bold_run2].append(s.series_id)
         elif "task-graphlearning_run-03" in s.protocol_name:
             info[graphlearning_bold_run3].append(s.series_id)
-        elif "task-graphlearning_run-04" in s.protocol_name:
-            info[graphlearning_bold_run4].append(s.series_id)
-        elif "task-graphlearning_run-05" in s.protocol_name:
-            info[graphlearning_bold_run5].append(s.series_id)
+        elif protocol.startswith('qsm'):
+            if "P" in s.image_type:
+                info[qsm_ph].append(s.series_id)
+            elif "M" in s.image_type:
+                info[qsm_mag].append(s.series_id)
 
     return info
 
@@ -91,10 +110,12 @@ def infotodict(seqinfo):
 IntendedFor = {
     # task visit
     fmap_pa_task_run1: [ '{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
+    fmap_ap_task_run1: [ '{session}/func/sub-{subject}_{session}_task-flanker_bold.nii.gz' ],
     fmap_pa_task_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01_bold.nii.gz',
                          '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold.nii.gz'],
-    fmap_pa_task_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03_bold.nii.gz',
-                         '{session}/func/sub-{subject}_{session}_task-graphlearning_run-04_bold.nii.gz',
-                         '{session}/func/sub-{subject}_{session}_task-graphlearning_run-05_bold.nii.gz'],
+    fmap_ap_task_run2: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-01_bold.nii.gz',
+                         '{session}/func/sub-{subject}_{session}_task-graphlearning_run-02_bold.nii.gz'],
+    fmap_pa_task_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03_bold.nii.gz'],
+    fmap_ap_task_run3: [ '{session}/func/sub-{subject}_{session}_task-graphlearning_run-03_bold.nii.gz'],
     }
 
