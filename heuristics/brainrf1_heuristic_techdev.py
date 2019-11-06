@@ -24,12 +24,12 @@ nback_HiConHiLoWMgated_run2 = create_key(
     
 nback_HiConHiLoWMgated_run3 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-HiConHiLoWMgated_run-01_bold')    
+    'task-nback_acq-HiConHiLoWMgated_run-03_bold')    
  
 # condition (run 2)   
 nback_HiConHiLoWMgated_run4 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-HiConHiLoWMgated_run-02_bold')   
+    'task-nback_acq-HiConHiLoWMgated_run-04_bold')   
 
 
 # field map, topup style      
