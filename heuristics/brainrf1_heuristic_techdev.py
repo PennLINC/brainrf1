@@ -31,13 +31,6 @@ nback_HiConHiLoWMgated_run4 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
     'task-nback_acq-HiConHiLoWMgated_run-04_bold')   
 
-
-# field map, topup style      
-fmap_pa_tms_run1 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-PA_run-01_epi')
-fmap_pa_tms_run2 = create_key(
-    'sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-fMRIdistmap_dir-PA_run-02_epi')  
-
 # **********************************************************************************
 
 def infotodict(seqinfo):
@@ -60,25 +53,14 @@ def infotodict(seqinfo):
         nback_HiConHiLoWMgated_run3: [],
         nback_HiConHiLoWMgated_run4: [],
         
-        fmap_pa_tms_run1: [],
-        fmap_pa_tms_run2: [],
     }
     
     for s in seqinfo:
         protocol = s.protocol_name.lower()
 
         # TMS day  
-        if "acq-fMRIdistmap_dir-PA_run-01" in s.protocol_name:
-            info[fmap_pa_tms_run1].append(s.series_id)
-        elif "acq-fMRIdistmap_dir-PA_run-02" in s.protocol_name:
-            info[fmap_pa_tms_run2].append(s.series_id)
-        
-        elif "task-nback_acq-HiConHiLoWMgated_run-01" in s.protocol_name:
+        if "task-nback_acq-HiConHiLoWMgated_run-01" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run1].append(s.series_id)
-            
-        elif "task-iTBS_acq-gated_bold" in s.protocol_name:
-            info[iTBS_gated].append(s.series_id)    
-        
         elif "task-nback_acq-HiConHiLoWMgated_run-02" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run2].append(s.series_id)
         elif "task-nback_acq-HiConHiLoWMgated_run-03" in s.protocol_name:
@@ -94,7 +76,4 @@ def infotodict(seqinfo):
 IntendedFor = {
     
     # HiConHiLo    
-    fmap_pa_tms_run1: [ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-01_bold.nii.gz',
-                        '{session}/func/sub-{subject}_{session}_task-iTBS_acq-gated_bold.nii.gz'],
-    fmap_pa_tms_run2:[ '{session}/func/sub-{subject}_{session}_task-nback_acq-HiConHiLoWMgated_run-02_bold.nii.gz'],
     }
