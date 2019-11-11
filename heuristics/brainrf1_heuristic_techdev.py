@@ -15,21 +15,21 @@ def create_key(template, outtype=('nii.gz',), annotation_classes=None):
 # condition (run 1)
 nback_HiConHiLoWMgated_run1 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-HiConHiLoWMgated_run-01_bold')    
+    'task-nback_acq-HiConHiLoWMgated1_bold')    
  
 # condition (run 2)   
 nback_HiConHiLoWMgated_run2 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-HiConHiLoWMgated_run-02_bold')   
+    'task-nback_acq-HiConHiLoWMgated2_bold')   
     
 nback_HiConHiLoWMgated_run3 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-HiConHiLoWMgated_run-03_bold')    
+    'task-nback_acq-HiConHiLoWMgated3_bold')    
  
 # condition (run 2)   
 nback_HiConHiLoWMgated_run4 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-HiConHiLoWMgated_run-04_bold')   
+    'task-nback_acq-HiConHiLoWMgated4_bold')   
 
 # **********************************************************************************
 
