@@ -61,13 +61,13 @@ def infotodict(seqinfo):
         if "t1w" in protocol:
             info[t1w].append(s.series_id)
         elif "task-nback_acq-HiConHiLoWMgated_run-01" in s.protocol_name:
-            info[nback_HiConHiLoWMgated_run1].append(s.series_id)
+            info[nback_HiConHiLoWMgated1].append(s.series_id)
         elif "task-nback_acq-HiConHiLoWMgated_run-02" in s.protocol_name:
-            info[nback_HiConHiLoWMgated_run2].append(s.series_id)
+            info[nback_HiConHiLoWMgated2].append(s.series_id)
         elif "task-nback_acq-HiConHiLoWMgated_run-03" in s.protocol_name:
-            info[nback_HiConHiLoWMgated_run3].append(s.series_id)
+            info[nback_HiConHiLoWMgated3].append(s.series_id)
         elif "task-nback_acq-HiConHiLoWMgated_run-04" in s.protocol_name:
-            info[nback_HiConHiLoWMgated_run4].append(s.series_id)
+            info[nback_HiConHiLoWMgated4].append(s.series_id)
 
     return info
 
