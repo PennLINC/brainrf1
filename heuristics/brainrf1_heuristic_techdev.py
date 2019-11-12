@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Heuristic for mapping Brain RF1 scans into BIDS with HiConHiLo stimulation condition visits"""
+"""Heuristic for mapping Brain RF1 scans into BIDS for 11.05.19 techdev"""
 import os
 
 
@@ -10,24 +10,22 @@ def create_key(template, outtype=('nii.gz',), annotation_classes=None):
 
     
 # **********************************************************************************
-# tms session
+# t1
+
+t1w = create_key(
+    'sub-{subject}/{session}/anat/sub-{subject}_{session}_T1w')
 
 # condition (run 1)
-nback_HiConHiLoWMgated_run1 = create_key(
+nback_HiConHiLoWMgated1 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-HiConHiLoWMgated1_bold')    
- 
-# condition (run 2)   
-nback_HiConHiLoWMgated_run2 = create_key(
+    'task-nback_acq-HiConHiLoWMgated1_bold')     
+nback_HiConHiLoWMgated2 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
     'task-nback_acq-HiConHiLoWMgated2_bold')   
-    
-nback_HiConHiLoWMgated_run3 = create_key(
+nback_HiConHiLoWMgated3 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
-    'task-nback_acq-HiConHiLoWMgated3_bold')    
- 
-# condition (run 2)   
-nback_HiConHiLoWMgated_run4 = create_key(
+    'task-nback_acq-HiConHiLoWMgated3_bold')     
+nback_HiConHiLoWMgated4 = create_key(
     'sub-{subject}/{session}/func/sub-{subject}_{session}_'
     'task-nback_acq-HiConHiLoWMgated4_bold')   
 
@@ -48,10 +46,11 @@ def infotodict(seqinfo):
     info = {
 
         # TMS scans
-        nback_HiConHiLoWMgated_run1: [],
-        nback_HiConHiLoWMgated_run2: [],
-        nback_HiConHiLoWMgated_run3: [],
-        nback_HiConHiLoWMgated_run4: [],
+        t1w: [],
+        nback_HiConHiLoWMgated1: [],
+        nback_HiConHiLoWMgated2: [],
+        nback_HiConHiLoWMgated3: [],
+        nback_HiConHiLoWMgated4: [],
         
     }
     
@@ -59,7 +58,9 @@ def infotodict(seqinfo):
         protocol = s.protocol_name.lower()
 
         # TMS day  
-        if "task-nback_acq-HiConHiLoWMgated_run-01" in s.protocol_name:
+        if if "t1w" in protocol:
+            info[t1w].append(s.series_id)
+        elif "task-nback_acq-HiConHiLoWMgated_run-01" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run1].append(s.series_id)
         elif "task-nback_acq-HiConHiLoWMgated_run-02" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run2].append(s.series_id)
