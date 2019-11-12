@@ -58,7 +58,7 @@ def infotodict(seqinfo):
         protocol = s.protocol_name.lower()
 
         # TMS day  
-        if if "t1w" in protocol:
+        if "t1w" in protocol:
             info[t1w].append(s.series_id)
         elif "task-nback_acq-HiConHiLoWMgated_run-01" in s.protocol_name:
             info[nback_HiConHiLoWMgated_run1].append(s.series_id)
